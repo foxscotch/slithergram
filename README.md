@@ -39,12 +39,13 @@ bunch of investigating. Maybe later.
 [requests]: http://docs.python-requests.org/
 
 
-## Getting Started
-
-I'll fill this in with a tutorial eventually, or I might just leave it to the
-documentation. Speaking of documentation...
-
-
 ## Documentation
 
 No such thing, at the moment. But I'll add such a thing, and it'll use Sphinx.
+
+
+### Getting Started
+
+I'll fill this in with a tutorial eventually, or maybe not. If I do, I imagine
+it'll be a copy of the tutorial that will be in the documentation. If I add a
+tutorial there.
