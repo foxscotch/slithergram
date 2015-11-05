@@ -10,7 +10,7 @@ class TelegramError(Exception):
 class Bot():
     base_url = 'https://api.telegram.org/bot'
 
-    def __init__(self, api_key, no_initial_check=True, **kwargs):
+    def __init__(self, api_key, initial_check=False, **kwargs):
         """
         Init function for Bot.
 
@@ -27,7 +27,7 @@ class Bot():
         self.url = self.base_url + api_key + '/'
         self.api_key = api_key
 
-        if no_initial_check:
+        if not initial_check:
             bot_id = kwargs.get('bot_id')
             first_name = kwargs.get('first_name')
             last_name = kwargs.get('last_name')
