@@ -1,4 +1,4 @@
-# slithergram
+# slithergram 0.0.0
 
 Here's where I will re-word the description that's up at the top. Or just leave
 it like this, since it's kinda funny, if you ask me.
@@ -28,7 +28,12 @@ But I'd just suggest you use one of the [other][] [Telegram][] [modules][].
 [modules]: https://github.com/leandrotoledo/python-telegram-bot
 
 
-## Requirements
+## Documentation
+
+No such thing, at the moment. But I'll add such a thing, and it'll use Sphinx.
+
+
+### Requirements
 
 Probably it doesn't actually _require_ exactly the versions I list, but they're
 the versions I'm using while working on it, and I don't feel like doing a whole
@@ -37,11 +42,6 @@ bunch of investigating. Maybe later.
 [requests][] 2.8.1
 
 [requests]: http://docs.python-requests.org/
-
-
-## Documentation
-
-No such thing, at the moment. But I'll add such a thing, and it'll use Sphinx.
 
 
 ### Getting Started
