@@ -7,7 +7,7 @@ class TelegramError(Exception):
     pass
 
 
-class Bot():
+class Bot:
     base_url = 'https://api.telegram.org/bot'
 
     def __init__(self, api_key, initial_check=False, **kwargs):
@@ -50,21 +50,7 @@ class Bot():
                 self.username = username
 
         else:
-            r = requests.get(self.base_url + 'getMe')
-            if r.status_code == 200:
-                result = json.loads(r.text)
-                if result['ok']:
-                    bot_info = result['result']
-                    self.bot_id = bot_info['id']
-                    self.first_name = bot_info['first_name']
-                    if 'last_name' in bot_info:
-                        self.last_name = bot_info['last_name']
-                    if 'username' in bot_info:
-                        self.username = bot_info['username']
-                else:
-                    raise TelegramError('The result was not "ok"')
-            else:
-                raise TelegramError('Did not get a 200 response', r.status_code)
+            self.update_info()
 
     def __repr__(self):
         """
@@ -102,7 +88,7 @@ class Bot():
 
     def serialize_to_file(self, filename=None):
         if not filename:
-            filename = self.__str__()
+            filename = self.__str__() + '.pkl'
         pickle.dump(self, open(filename, 'wb+'))
 
     @staticmethod
@@ -110,8 +96,10 @@ class Bot():
         return pickle.loads(deserialization_string)
 
     @staticmethod
-    def deserialize_from_file(filename=None):
+    def deserialize_from_file(filename):
         return pickle.load(open(filename, 'rb'))
 
 
-example_bot = Bot(api_key='123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11', bot_id=123, first_name='Example Bot')
+example_bot = Bot(api_key='123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11',
+                  bot_id=123456,
+                  first_name='Example Bot')

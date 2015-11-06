@@ -29,6 +29,13 @@ Got it? Okay.
 ### 0.0.x
 
 
+#### 0.0.1
+
+- Replaced the messy contents of the `else` block in Bot.__init__() with a call
+  to Bot.update_info()
+- Added '.pkl' file extension to default filename for Bot.serialize_to_file()
+
+
 #### 0.0.0
 
 This is the first version. I'm not really _sure_ if it's supposed to start with
