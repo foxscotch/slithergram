@@ -1,4 +1,4 @@
-# slithergram 0.0.1
+# Slithergram 0.0.1
 
 Here's where I will re-word the description that's up at the top. Or just leave
 it like this, since it's kinda funny, if you ask me.
@@ -30,7 +30,11 @@ But I'd just suggest you use one of the [other][] [Telegram][] [modules][].
 
 ## Documentation
 
-No such thing, at the moment. But I'll add such a thing, and it'll use Sphinx.
+The source for the documentation can be found in the docs folder. It's pretty
+much blank right now, but there nevertheless. When it's a little more complete,
+I'll stick it on [readthedocs.org][rtd]
+
+[rtd]: https://readthedocs.org/
 
 
 ### Requirements
