@@ -1,4 +1,4 @@
-# slithergram 0.0.0
+# slithergram 0.0.1
 
 Here's where I will re-word the description that's up at the top. Or just leave
 it like this, since it's kinda funny, if you ask me.
