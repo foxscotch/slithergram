@@ -41,9 +41,9 @@ do the same, for dependency reasons.
 0.0.2
 -----
 
-- Fixed a bug with :py:meth:`Bot.update_info`. It used the :py:attr:`Bot.base_url`
-  attribute rather than just :py:attr:`Bot.url`, leading to it retrieving a plain
-  web page, causing a :py:exc:`json.JSONDecodeError`
+- Fixed a bug with :py:meth:`Bot.update_info`. It used the
+  :py:attr:`Bot.base_url` attribute rather than just :py:attr:`Bot.url`, leading
+  to it retrieving a plain web page, causing a :py:exc:`json.JSONDecodeError`
 
 
 .. _v-0-0-1:
