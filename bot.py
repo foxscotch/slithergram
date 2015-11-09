@@ -8,23 +8,19 @@ class TelegramError(Exception):
 
 
 class Bot:
-    base_url = 'https://api.telegram.org/bot'
-
     def __init__(self, api_key, initial_check=False, **kwargs):
         """
         Init function for Bot.
 
-        Args:
-            api_key: Your bot's API key.
-            no_initial_check: Specifies that no bot info check should be made.
-            **kwargs:
-                bot_id: Bot ID
-                first_name: Bot's name
-                last_name: Bot's last name, optional
-                username: Bot's username, optional
+        :param str api_key: api_key: Your bot's API key
+        :param bool initial_check: Specifies whether an info check should be made
+        :param int bot_id: Bot ID
+        :param str first_name: Bot's name
+        :param str last_name: Bot's last name, optional
+        :param str username: Bot's username, optional
         """
 
-        self.url = self.base_url + api_key + '/'
+        self.url = 'https://api.telegram.org/bot' + api_key + '/'
         self.api_key = api_key
 
         if not initial_check:
@@ -67,6 +63,15 @@ class Bot:
         return self.first_name
 
     def update_info(self):
+        """
+        Updates the bot's info.
+
+        It makes a request to the Telegram API method getMe for your bot. So, it
+        can take a second, and you probably shouldn't use this in any situation
+        where getting a result is time-sensitive (e.g. for a web application).
+
+        This method is used in :py:meth:`__init__()` if initial_check is True.
+        """
         r = requests.get(self.url + 'getMe')
         if r.status_code == 200:
             result = json.loads(r.text)

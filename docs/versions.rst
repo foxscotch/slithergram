@@ -27,6 +27,15 @@ do the same, for dependency reasons.
 =====
 
 
+.. _v-0-0-3:
+
+0.0.3
+-----
+
+- Removed Bot.base_url. I couldn't think of any situation where I'd need it
+  again after the :py:meth:`Bot.__init__` call, so I just hardcoded that into it
+
+
 .. _v-0-0-2:
 
 0.0.2
