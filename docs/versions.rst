@@ -21,6 +21,22 @@ do the same, for dependency reasons.
 -----
 
 
+.. _v-0-1-x:
+
+0.1.x
+=====
+
+
+.. _v-0-1-0:
+
+0.1.0
+-----
+
+- Changed names of :py:meth:`Bot.serialize_to_string` and
+  :py:meth:`Bot.deserialize_from_string` to :py:meth:`Bot.serialize_to_bytes`
+  and :py:meth:`Bot.deserialize_from_bytes`, respectively
+
+
 .. _v-0-0-x:
 
 0.0.x
