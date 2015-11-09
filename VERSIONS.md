@@ -29,6 +29,12 @@ Got it? Okay.
 ### 0.0.x
 
 
+#### 0.0.2
+
+- Fixed a bug with Bot.update_info(). It used the base_url attribute rather than
+  just url, leading to it retrieving a plain web page, causing a JSONDecodeError
+
+
 #### 0.0.1
 
 - Replaced the messy contents of the `else` block in Bot.__init__() with a call

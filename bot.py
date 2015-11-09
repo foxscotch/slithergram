@@ -67,7 +67,7 @@ class Bot:
         return self.first_name
 
     def update_info(self):
-        r = requests.get(self.base_url + 'getMe')
+        r = requests.get(self.url + 'getMe')
         if r.status_code == 200:
             result = json.loads(r.text)
             if result['ok']:
