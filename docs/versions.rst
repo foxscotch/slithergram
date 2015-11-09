@@ -2,6 +2,8 @@
 Version History
 ===============
 
+.. currentmodule:: slithergram.bot
+
 I'm going to *try* to use `Semantic Versioning`_, but who knows if it'll
 work out. This is kinda small, so I normally wouldn't consider versioning all
 that necessary, but given that it'll probably map pretty closely to the official
@@ -11,8 +13,6 @@ do the same, for dependency reasons.
 .. _Semantic Versioning: http://semver.org/
 
 .. contents::
-
-.. currentmodule:: slithergram.bot
 
 .. _v-0-x-x:
 
@@ -43,7 +43,7 @@ do the same, for dependency reasons.
 
 - Fixed a bug with :py:meth:`Bot.update_info`. It used the
   :py:attr:`Bot.base_url` attribute rather than just :py:attr:`Bot.url`, leading
-  to it retrieving a plain web page, causing a :py:exc:`json.JSONDecodeError`
+  to it retrieving a plain web page, causing a :py:exc:`JSONDecodeError`
 
 
 .. _v-0-0-1:

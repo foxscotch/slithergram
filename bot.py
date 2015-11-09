@@ -53,7 +53,7 @@ class Bot:
         The repr function for Bot. It's not a perfect representation of the very
         same object. But it's descriptive enough.
         """
-        return 'Bot(api_key="{0}", no_initial_check=False)'.format(self.api_key)
+        return 'Bot(api_key="{0}", initial_check=True)'.format(self.api_key)
 
     def __str__(self):
         """
