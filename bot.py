@@ -94,8 +94,6 @@ class Bot:
     def serialize_to_bytes(self):
         """
         Creates and returns a pickle string representation of the instance.
-        Actually, it's a bytes object, so maybe I should change it to
-        "serialize_to_bytes"?
 
         :return: Pickle serialization string
         :rtype: bytes
