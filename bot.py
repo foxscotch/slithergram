@@ -14,8 +14,8 @@ class Bot:
 
         :param str api_key: api_key: Your bot's API key
         :param bool initial_check: Specifies whether an info check should be made
-        :param int bot_id: Bot ID
-        :param str first_name: Bot's name
+        :param int bot_id: Bot ID, optional if initial_check
+        :param str first_name: Bot's name, optional if initial_check
         :param str last_name: Bot's last name, optional
         :param str username: Bot's username, optional
         """
@@ -53,13 +53,15 @@ class Bot:
         The repr function for Bot. It's not a perfect representation of the very
         same object. But it's descriptive enough.
         """
-        return 'Bot(api_key="{0}", no_initial_check=False)'.format(self.api_key)
+
+        return 'Bot(api_key="{0}", initial_check=True)'.format(self.api_key)
 
     def __str__(self):
         """
         The str function for Bot. It returns the first_name of the bot, and it's
         mostly just intended to be the name of the file for serialization.
         """
+
         return self.first_name
 
     def update_info(self):
@@ -72,6 +74,7 @@ class Bot:
 
         This method is used in :py:meth:`__init__()` if initial_check is True.
         """
+
         r = requests.get(self.url + 'getMe')
         if r.status_code == 200:
             result = json.loads(r.text)
@@ -88,20 +91,54 @@ class Bot:
         else:
             raise TelegramError('Did not get a 200 response', r.status_code)
 
-    def serialize_to_string(self):
+    def serialize_to_bytes(self):
+        """
+        Creates and returns a pickle string representation of the instance.
+
+        :return: Pickle serialization string
+        :rtype: bytes
+        """
+
         return pickle.dumps(self)
 
     def serialize_to_file(self, filename=None):
+        """
+        Creates and saves a pickle file for the instance. By default, it uses
+        "first_name.pkl" as the file name, where first_name is the object's real
+        first_name attribute. Then it returns the file name.
+
+        :param str filename: File name you want to save as
+        :return: File name it was saved as
+        :rtype: str
+        """
+
         if not filename:
             filename = self.__str__() + '.pkl'
         pickle.dump(self, open(filename, 'wb+'))
+        return filename
 
     @staticmethod
-    def deserialize_from_string(deserialization_string):
+    def deserialize_from_bytes(deserialization_string):
+        """
+        Loads a pickle representation of an object from a bytes object.
+
+        :param bytes deserialization_string: Bytes object to load from
+        :return: The Bot instance that was loaded
+        :rtype: Bot
+        """
+
         return pickle.loads(deserialization_string)
 
     @staticmethod
     def deserialize_from_file(filename):
+        """
+        Loads a pickle representation of an object from a file.
+
+        :param str filename: Name of file to load from
+        :return: The Bot instance that was loaded
+        :rtype: Bot
+        """
+
         return pickle.load(open(filename, 'rb'))
 
 

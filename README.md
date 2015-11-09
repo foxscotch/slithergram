@@ -1,11 +1,11 @@
-# Slithergram 0.0.3
+# Slithergram 0.1.1
 
 Here's where I will re-word the description that's up at the top. Or just leave
 it like this, since it's kinda funny, if you ask me.
 
-Licensed under the [MIT License][].
+Licensed under the [MIT License][mit].
 
-[MIT License]: https://opensource.org/licenses/MIT
+[mit]: https://opensource.org/licenses/MIT
 
 
 ## Python Version

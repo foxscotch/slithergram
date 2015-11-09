@@ -2,6 +2,8 @@
 Version History
 ===============
 
+.. currentmodule:: slithergram.bot
+
 I'm going to *try* to use `Semantic Versioning`_, but who knows if it'll
 work out. This is kinda small, so I normally wouldn't consider versioning all
 that necessary, but given that it'll probably map pretty closely to the official
@@ -12,13 +14,37 @@ do the same, for dependency reasons.
 
 .. contents::
 
-.. currentmodule:: slithergram.bot
-
 .. _v-0-x-x:
 
 -----
 0.x.x
 -----
+
+
+.. _v-0-1-x:
+
+0.1.x
+=====
+
+
+.. _v-0-1-1:
+
+0.1.1
+-----
+
+- Removed the capability to use :py:obj:`str` objects for
+  :py:meth:`Bot.deserialize_from_bytes`. I realized it wouldn't work at all,
+  because pickle is not JSON.
+
+
+.. _v-0-1-0:
+
+0.1.0
+-----
+
+- Changed names of :py:meth:`Bot.serialize_to_string` and
+  :py:meth:`Bot.deserialize_from_string` to :py:meth:`Bot.serialize_to_bytes`
+  and :py:meth:`Bot.deserialize_from_bytes`, respectively
 
 
 .. _v-0-0-x:
@@ -43,7 +69,7 @@ do the same, for dependency reasons.
 
 - Fixed a bug with :py:meth:`Bot.update_info`. It used the
   :py:attr:`Bot.base_url` attribute rather than just :py:attr:`Bot.url`, leading
-  to it retrieving a plain web page, causing a :py:exc:`json.JSONDecodeError`
+  to it retrieving a plain web page, causing a :py:exc:`JSONDecodeError`
 
 
 .. _v-0-0-1:
