@@ -88,20 +88,58 @@ class Bot:
         else:
             raise TelegramError('Did not get a 200 response', r.status_code)
 
-    def serialize_to_string(self):
+    def serialize_to_bytes(self):
+        """
+        Creates and returns a pickle string representation of the instance.
+        Actually, it's a bytes object, so maybe I should change it to
+        "serialize_to_bytes"?
+
+        :return: Pickle serialization string
+        :rtype: bytes
+        """
         return pickle.dumps(self)
 
     def serialize_to_file(self, filename=None):
+        """
+        Creates and saves a pickle file for the instance. By default, it uses
+        "first_name.pkl" as the file name, where first_name is the object's real
+        first_name attribute. Then it returns the file name.
+
+        :param str filename: File name you want to save as
+        :return: File name it was saved as
+        :rtype: str
+        """
         if not filename:
             filename = self.__str__() + '.pkl'
         pickle.dump(self, open(filename, 'wb+'))
+        return filename
 
     @staticmethod
-    def deserialize_from_string(deserialization_string):
-        return pickle.loads(deserialization_string)
+    def deserialize_from_bytes(deserialization_string):
+        """
+        Loads a pickle representation of an object from a bytes object. It can
+        also load from a string, but bytes is preferred. I'm not sure what would
+        happen if you used a string object that contained non-ASCII characters.
+
+        :param bytes deserialization_string: Bytes object to load from
+        :return: The Bot instance that was loaded
+        :rtype: Bot
+        """
+        try:
+            return pickle.loads(deserialization_string)
+        except TypeError:
+            deserialization_string = deserialization_string.encode()
+            return pickle.loads(deserialization_string)
 
     @staticmethod
     def deserialize_from_file(filename):
+        """
+        Loads a pickle representation of an object from a file.
+
+        :param str filename: Name of file to load from
+        :return: The Bot instance that was loaded
+        :rtype: Bot
+        """
         return pickle.load(open(filename, 'rb'))
 
 
