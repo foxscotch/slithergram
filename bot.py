@@ -53,6 +53,7 @@ class Bot:
         The repr function for Bot. It's not a perfect representation of the very
         same object. But it's descriptive enough.
         """
+
         return 'Bot(api_key="{0}", initial_check=True)'.format(self.api_key)
 
     def __str__(self):
@@ -60,6 +61,7 @@ class Bot:
         The str function for Bot. It returns the first_name of the bot, and it's
         mostly just intended to be the name of the file for serialization.
         """
+
         return self.first_name
 
     def update_info(self):
@@ -72,6 +74,7 @@ class Bot:
 
         This method is used in :py:meth:`__init__()` if initial_check is True.
         """
+
         r = requests.get(self.url + 'getMe')
         if r.status_code == 200:
             result = json.loads(r.text)
@@ -97,6 +100,7 @@ class Bot:
         :return: Pickle serialization string
         :rtype: bytes
         """
+
         return pickle.dumps(self)
 
     def serialize_to_file(self, filename=None):
@@ -109,6 +113,7 @@ class Bot:
         :return: File name it was saved as
         :rtype: str
         """
+
         if not filename:
             filename = self.__str__() + '.pkl'
         pickle.dump(self, open(filename, 'wb+'))
@@ -117,19 +122,14 @@ class Bot:
     @staticmethod
     def deserialize_from_bytes(deserialization_string):
         """
-        Loads a pickle representation of an object from a bytes object. It can
-        also load from a string, but bytes is preferred. I'm not sure what would
-        happen if you used a string object that contained non-ASCII characters.
+        Loads a pickle representation of an object from a bytes object.
 
         :param bytes deserialization_string: Bytes object to load from
         :return: The Bot instance that was loaded
         :rtype: Bot
         """
-        try:
-            return pickle.loads(deserialization_string)
-        except TypeError:
-            deserialization_string = deserialization_string.encode()
-            return pickle.loads(deserialization_string)
+
+        return pickle.loads(deserialization_string)
 
     @staticmethod
     def deserialize_from_file(filename):
@@ -140,6 +140,7 @@ class Bot:
         :return: The Bot instance that was loaded
         :rtype: Bot
         """
+
         return pickle.load(open(filename, 'rb'))
 
 

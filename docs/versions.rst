@@ -27,6 +27,16 @@ do the same, for dependency reasons.
 =====
 
 
+.. _v-0-1-1:
+
+0.1.1
+-----
+
+- Removed the capability to use :py:obj:`str` objects for
+  :py:meth:`Bot.deserialize_from_bytes`. I realized it wouldn't work at all,
+  because pickle is not JSON.
+
+
 .. _v-0-1-0:
 
 0.1.0
