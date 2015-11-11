@@ -8,7 +8,8 @@ Contents:
    :maxdepth: 2
 
    versions
-   bot-class
+   slithergram-main
+   slithergram-bot
 
 
 

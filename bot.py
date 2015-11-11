@@ -5,19 +5,19 @@ from .main import TelegramError, User
 
 
 class Bot(User):
+    """
+    Class for controlling a Telegram bot.
+
+    :param str api_key: api_key: Your bot's API key
+    :param bool initial_check: Specifies whether an info check should be made
+    :param int bot_id: Bot ID, optional if initial_check
+    :param str first_name: Bot's name, optional if initial_check
+    :param str last_name: Bot's last name, optional
+    :param str username: Bot's username, optional
+    """
+
     # noinspection PyMissingConstructor
     def __init__(self, api_key, initial_check=False, **kwargs):
-        """
-        Init function for Bot.
-
-        :param str api_key: api_key: Your bot's API key
-        :param bool initial_check: Specifies whether an info check should be made
-        :param int bot_id: Bot ID, optional if initial_check
-        :param str first_name: Bot's name, optional if initial_check
-        :param str last_name: Bot's last name, optional
-        :param str username: Bot's username, optional
-        """
-
         self.url = 'https://api.telegram.org/bot' + api_key + '/'
         self.api_key = api_key
 
@@ -47,11 +47,6 @@ class Bot(User):
             self.update_info()
 
     def __repr__(self):
-        """
-        The repr function for Bot. It's not a perfect representation of the very
-        same object. But it's descriptive enough.
-        """
-
         return 'Bot(api_key="{0}", initial_check=True)'.format(self.api_key)
 
     def update_info(self):
