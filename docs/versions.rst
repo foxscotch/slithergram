@@ -21,6 +21,30 @@ do the same, for dependency reasons.
 -----
 
 
+.. _v-0-2-x:
+
+0.2.x
+=====
+
+
+.. _v-0-2-0:
+
+0.2.0
+-----
+
+Big changes here! Especially in the overall layout of it. I've planned since the
+beginning to have formal classes for all of the Telegram API types, but I hadn't
+decided until now that they'll all inherit from a base class that contains the
+simpler, more universal stuff, like the serialization functions.
+
+For specificity:
+
+- Removed serialization functions from :py:class:`Bot`, stuck them in
+  :py:class:`slithergram.main.User` instead
+- :py:class:`Bot` now inherits from :py:class:`slithergram.main.User`
+- Moved :py:exc:`TelegramError` to its new home in :py:mod:`slithergram.main`
+
+
 .. _v-0-1-x:
 
 0.1.x
@@ -32,7 +56,7 @@ do the same, for dependency reasons.
 0.1.1
 -----
 
-- Removed the capability to use :py:obj:`str` objects for
+- Removed the capability to use :py:class:`str` objects for
   :py:meth:`Bot.deserialize_from_bytes`. I realized it wouldn't work at all,
   because pickle is not JSON.
 
