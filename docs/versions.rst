@@ -2,7 +2,7 @@
 Version History
 ===============
 
-.. currentmodule:: slithergram.bot
+.. currentmodule:: slithergram
 
 I'm going to *try* to use `Semantic Versioning`_, but who knows if it'll
 work out. This is kinda small, so I normally wouldn't consider versioning all
@@ -39,10 +39,10 @@ simpler, more universal stuff, like the serialization functions.
 
 For specificity:
 
-- Removed serialization functions from :py:class:`Bot`, stuck them in
-  :py:class:`slithergram.main.User` instead
-- :py:class:`Bot` now inherits from :py:class:`slithergram.main.User`
-- Moved :py:exc:`TelegramError` to its new home in :py:mod:`slithergram.main`
+- Removed serialization functions from :py:class:`bot.Bot`, stuck them in
+  :py:class:`main.User` instead
+- :py:class:`bot.Bot` now inherits from :py:class:`main.User`
+- Moved :py:exc:`main.TelegramError` to its new home in :py:mod:`main`
 
 
 .. _v-0-1-x:
@@ -57,7 +57,7 @@ For specificity:
 -----
 
 - Removed the capability to use :py:class:`str` objects for
-  :py:meth:`Bot.deserialize_from_bytes`. I realized it wouldn't work at all,
+  :py:meth:`bot.Bot.deserialize_from_bytes`. I realized it wouldn't work at all,
   because pickle is not JSON.
 
 
@@ -66,9 +66,9 @@ For specificity:
 0.1.0
 -----
 
-- Changed names of :py:meth:`Bot.serialize_to_string` and
-  :py:meth:`Bot.deserialize_from_string` to :py:meth:`Bot.serialize_to_bytes`
-  and :py:meth:`Bot.deserialize_from_bytes`, respectively
+- Changed names of :py:meth:`bot.Bot.serialize_to_string` and
+  :py:meth:`bot.Bot.deserialize_from_string` to :py:meth:`bot.Bot.serialize_to_bytes`
+  and :py:meth:`bot.Bot.deserialize_from_bytes`, respectively
 
 
 .. _v-0-0-x:
@@ -83,7 +83,7 @@ For specificity:
 -----
 
 - Removed Bot.base_url. I couldn't think of any situation where I'd need it
-  again after the :py:meth:`Bot.__init__` call, so I just hardcoded that into it
+  again after the :py:meth:`bot.Bot.__init__` call, so I just hardcoded that into it
 
 
 .. _v-0-0-2:
@@ -91,8 +91,8 @@ For specificity:
 0.0.2
 -----
 
-- Fixed a bug with :py:meth:`Bot.update_info`. It used the
-  :py:attr:`Bot.base_url` attribute rather than just :py:attr:`Bot.url`, leading
+- Fixed a bug with :py:meth:`bot.Bot.update_info`. It used the
+  :py:attr:`bot.Bot.base_url` attribute rather than just :py:attr:`bot.Bot.url`, leading
   to it retrieving a plain web page, causing a :py:exc:`JSONDecodeError`
 
 
@@ -101,10 +101,10 @@ For specificity:
 0.0.1
 -----
 
-- Replaced the messy contents of the else block in :py:meth:`Bot.__init__`
-  with a call to :py:meth:`Bot.update_info`
+- Replaced the messy contents of the else block in :py:meth:`bot.Bot.__init__`
+  with a call to :py:meth:`bot.Bot.update_info`
 - Added '.pkl' file extension to default filename for
-  :py:meth:`Bot.serialize_to_file`
+  :py:meth:`bot.Bot.serialize_to_file`
 
 
 .. _v-0-0-0:
@@ -116,14 +116,14 @@ This is the first version. I'm not really *sure* if it's supposed to start with
 all zeroes, but it gets the job done. Since there aren't any changes to list, I
 might as well just make a quick description of what I made before starting this.
 
-- :py:class:`Bot` class in :py:mod:`slithergram.bot`
-    - :py:meth:`Bot.__init__`
-    - :py:meth:`Bot.__repr__`
-    - :py:meth:`Bot.__str__`
-    - :py:meth:`Bot.update_info` (:py:meth:`Bot.__init__` should probably call this)
-    - :py:meth:`Bot.serlialize_to_string`
-    - :py:meth:`Bot.serlialize_to_file`
-    - :py:meth:`Bot.deserlialize_from_string`
-    - :py:meth:`Bot.deserlialize_from_file`
-- :py:obj:`example_bot` :py:class:`Bot` instance in :py:mod:`slithergram.bot`,
+- :py:class:`bot.Bot` class in :py:mod:`bot`
+    - :py:meth:`bot.Bot.__init__`
+    - :py:meth:`bot.Bot.__repr__`
+    - :py:meth:`bot.Bot.__str__`
+    - :py:meth:`bot.Bot.update_info` (:py:meth:`bot.Bot.__init__` should probably call this)
+    - :py:meth:`bot.Bot.serlialize_to_string`
+    - :py:meth:`bot.Bot.serlialize_to_file`
+    - :py:meth:`bot.Bot.deserlialize_from_string`
+    - :py:meth:`bot.Bot.deserlialize_from_file`
+- :py:obj:`bot.example_bot` :py:class:`bot.Bot` instance in :py:mod:`bot`,
   just an example. I'll probably get rid of it or comment it out or something.
