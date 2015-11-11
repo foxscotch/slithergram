@@ -27,6 +27,17 @@ do the same, for dependency reasons.
 =====
 
 
+.. _v-0-2-1:
+
+0.2.1
+-----
+
+- Creation of :py:class:`main.TelegramBase`, which now contains the seralization
+  methods
+- Removed serialization methods from :py:class:`main.User` and made it inherit
+  from :py:class:`main.TelegramBase`
+
+
 .. _v-0-2-0:
 
 0.2.0
@@ -42,7 +53,8 @@ For specificity:
 - Removed serialization functions from :py:class:`bot.Bot`, stuck them in
   :py:class:`main.User` instead
 - :py:class:`bot.Bot` now inherits from :py:class:`main.User`
-- Moved :py:exc:`main.TelegramError` to its new home in :py:mod:`main`
+- Moved :py:exc:`main.TelegramError` to its new home in
+  :py:mod:`slithergram.main`
 
 
 .. _v-0-1-x:
@@ -116,7 +128,7 @@ This is the first version. I'm not really *sure* if it's supposed to start with
 all zeroes, but it gets the job done. Since there aren't any changes to list, I
 might as well just make a quick description of what I made before starting this.
 
-- :py:class:`bot.Bot` class in :py:mod:`bot`
+- :py:class:`bot.Bot` class in :py:mod:`slithergram.bot`
     - :py:meth:`bot.Bot.__init__`
     - :py:meth:`bot.Bot.__repr__`
     - :py:meth:`bot.Bot.__str__`
@@ -125,5 +137,6 @@ might as well just make a quick description of what I made before starting this.
     - :py:meth:`bot.Bot.serlialize_to_file`
     - :py:meth:`bot.Bot.deserlialize_from_string`
     - :py:meth:`bot.Bot.deserlialize_from_file`
-- :py:obj:`bot.example_bot` :py:class:`bot.Bot` instance in :py:mod:`bot`,
-  just an example. I'll probably get rid of it or comment it out or something.
+- :py:obj:`bot.example_bot` :py:class:`bot.Bot` instance in
+  :py:mod:`slithergram.bot`, just an example. I'll probably get rid of it or
+  comment it out or something.
