@@ -61,7 +61,7 @@ class Bot(User):
             self.update_info()
 
     def __repr__(self):
-        return 'Bot(api_key="{0}", initial_check=True)'.format(self.api_key)
+        return '<bot {0}>'.format(self.user_id)
 
     def update_info(self):
         """
@@ -89,6 +89,23 @@ class Bot(User):
                 raise TelegramError('The result was not "ok"')
         else:
             raise TelegramError('Did not get a 200 response', r.status_code)
+
+    def send_message(self, chat, message):
+        """
+        Method that will be used to send messages as the bot.
+
+        This is just a temporary version. The real version will be more complex.
+
+        :param Chat chat: Chat you want to send the message in
+        :param str message: Message that you want to send
+        :return: The server's response
+        :rtype: requests.models.Response
+        """
+
+        url = self.url + 'sendMessage?chat_id={0}&text={1}'.format(chat.chat_id,
+                                                                   message)
+        r = requests.get(url)
+        return r
 
 
 example_bot = Bot(api_key='123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11',

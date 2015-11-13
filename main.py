@@ -8,6 +8,21 @@ import pickle
 import json
 
 
+def convert_json_to_objects(json):
+    """
+    Converts a JSON string from the API to a collection of objects that
+    correspond to the classes defined in this module.
+
+    (It's not implemented yet)
+
+    :param str json: JSON string
+    :return: Collection of objects
+    :rtype: dict
+    """
+
+    pass
+
+
 class TelegramError(Exception):
     pass
 
@@ -99,8 +114,7 @@ class User(TelegramBase):
         very same object, but it's descriptive enough.
         """
 
-        return 'User(user_id={0}, first_name{1})'.format(self.user_id,
-                                                         self.first_name)
+        return '<user {0}>'.format(self.user_id)
 
     def __str__(self):
         """
