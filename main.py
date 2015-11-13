@@ -50,8 +50,7 @@ class TelegramBase:
         Loads a pickle representation of an object from a bytes object.
 
         :param bytes deserialization_string: Bytes object to load from
-        :return: The instance that was loaded
-        :rtype: User
+        :return: The instance that was
         """
 
         return pickle.loads(deserialization_string)
@@ -63,7 +62,6 @@ class TelegramBase:
 
         :param str filename: Name of file to load from
         :return: The instance that was loaded
-        :rtype: User
         """
 
         return pickle.load(open(filename, 'rb'))
@@ -78,15 +76,22 @@ class User(TelegramBase):
     :param str last_name: User's last name, optional
     :param str username: User's username, optional
     """
+
     def __init__(self, user_id, first_name, last_name=None, username=None):
 
         self.user_id = user_id
+        """The user's user ID."""
+
         self.first_name = first_name
+        """The user's first name."""
 
         if last_name:
             self.last_name = last_name
+            """The user's last name"""
+
         if username:
             self.username = username
+            """The user's username."""
 
     def __repr__(self):
         """
