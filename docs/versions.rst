@@ -27,6 +27,18 @@ do the same, for dependency reasons.
 =====
 
 
+.. _v-0-2-2:
+
+0.2.2
+-----
+
+- Change name of :py:attr:`bot.Bot.bot_id` to :py:attr:`bot.Bot.user_id`
+- Change :py:meth:`__repr__` for both User and Bot from an instantiation-like
+  format to "<user {id}>" and "<bot {id}>"
+- Added a preliminary :py:meth:`bot.Bot.send_message` method
+- Added non-functional definition of :py:func:`main.convert_json_to_objects`
+
+
 .. _v-0-2-1:
 
 0.2.1
@@ -105,7 +117,7 @@ For specificity:
 
 - Fixed a bug with :py:meth:`bot.Bot.update_info`. It used the
   :py:attr:`bot.Bot.base_url` attribute rather than just :py:attr:`bot.Bot.url`, leading
-  to it retrieving a plain web page, causing a :py:exc:`JSONDecodeError`
+  to it retrieving a plain web page, causing a :py:exc:`json.JSONDecodeError`
 
 
 .. _v-0-0-1:

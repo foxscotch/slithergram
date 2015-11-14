@@ -8,6 +8,21 @@ import pickle
 import json
 
 
+def convert_json_to_objects(json):
+    """
+    Converts a JSON string from the API to a collection of objects that
+    correspond to the classes defined in this module.
+
+    (It's not implemented yet)
+
+    :param str json: JSON string
+    :return: Collection of objects
+    :rtype: dict
+    """
+
+    pass
+
+
 class TelegramError(Exception):
     pass
 
@@ -50,8 +65,7 @@ class TelegramBase:
         Loads a pickle representation of an object from a bytes object.
 
         :param bytes deserialization_string: Bytes object to load from
-        :return: The instance that was loaded
-        :rtype: User
+        :return: The instance that was
         """
 
         return pickle.loads(deserialization_string)
@@ -63,7 +77,6 @@ class TelegramBase:
 
         :param str filename: Name of file to load from
         :return: The instance that was loaded
-        :rtype: User
         """
 
         return pickle.load(open(filename, 'rb'))
@@ -78,15 +91,22 @@ class User(TelegramBase):
     :param str last_name: User's last name, optional
     :param str username: User's username, optional
     """
+
     def __init__(self, user_id, first_name, last_name=None, username=None):
 
         self.user_id = user_id
+        """The user's user ID."""
+
         self.first_name = first_name
+        """The user's first name."""
 
         if last_name:
             self.last_name = last_name
+            """The user's last name"""
+
         if username:
             self.username = username
+            """The user's username."""
 
     def __repr__(self):
         """
@@ -94,8 +114,7 @@ class User(TelegramBase):
         very same object, but it's descriptive enough.
         """
 
-        return 'User(user_id={0}, first_name{1})'.format(self.user_id,
-                                                         self.first_name)
+        return '<user {0}>'.format(self.user_id)
 
     def __str__(self):
         """
