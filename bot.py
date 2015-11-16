@@ -59,6 +59,8 @@ class Bot(User):
 
         else:
             self.update_info()
+        
+        self._default_filename = self.first_name
 
     def __repr__(self):
         return '<bot {0}>'.format(self.user_id)

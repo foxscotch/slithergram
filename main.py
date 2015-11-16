@@ -32,6 +32,8 @@ class TelegramBase:
     This class includes methods that should be part of all Telegram-related
     objects.
     """
+    
+    _default_filename = 'Telegram_serialization'
 
     def serialize_to_bytes(self):
         """
@@ -55,7 +57,7 @@ class TelegramBase:
         """
 
         if not filename:
-            filename = self.__str__() + '.pkl'
+            filename = self._default_filename + '.pkl'
         pickle.dump(self, open(filename, 'wb+'))
         return filename
 
@@ -107,6 +109,8 @@ class User(TelegramBase):
         if username:
             self.username = username
             """The user's username."""
+        
+        self._default_filename = self.first_name
 
     def __repr__(self):
         """
