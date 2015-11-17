@@ -222,10 +222,13 @@ class ReplyKeyboardMarkup(TelegramBase):
             self.selective = False
 
         if 'preset' in kwargs:
-            if kwargs['preset'] in presets:
+            try:
                 self.keyboard = presets[kwargs['preset']]
-            else:
+            except KeyError:
                 raise ValueError('You chose an invalid preset')
+
+        if 'keyboard' not in self.__dict__:
+            raise ValueError('Must have a keyboard')
 
     def as_dict(self):
         return self.__dict__
