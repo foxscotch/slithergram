@@ -32,6 +32,8 @@ class TelegramBase:
     This class includes methods that should be part of all Telegram-related
     objects.
     """
+    
+    _default_filename = 'Telegram_serialization'
 
     def serialize_to_bytes(self):
         """
@@ -55,7 +57,7 @@ class TelegramBase:
         """
 
         if not filename:
-            filename = self.__str__() + '.pkl'
+            filename = self._default_filename + '.pkl'
         pickle.dump(self, open(filename, 'wb+'))
         return filename
 
@@ -107,6 +109,8 @@ class User(TelegramBase):
         if username:
             self.username = username
             """The user's username."""
+        
+        self._default_filename = self.first_name
 
     def __repr__(self):
         """
@@ -119,9 +123,57 @@ class User(TelegramBase):
     def __str__(self):
         """
         The str function for User. It returns the first_name of the user, and
-        it's mostly just intended to be the name of the file for serialization.
+        it was originally intended to be the name of the file for serialization.
         Because first names don't have to be unique, it probably isn't a very
         good idea to use this in important contexts.
         """
 
         return self.first_name
+
+
+class ReplyKeyboardMarkup(TelegramBase):
+    """
+    Class for defining a custom keyboard.
+
+    :param list keyboard: Custom keyboard to use
+    """
+    def __init__(self, keyboard=None, **kwargs):
+        presets = {
+            'four_choices': [
+                ['A', 'B'],
+                ['C', 'D']
+            ],
+            'calculator': [
+                [['7'], ['8'], ['9'], ['*']],
+                [['4'], ['5'], ['6'], ['/']],
+                [['1'], ['2'], ['3'], ['-']],
+                [['0'], ['.'], ['='], ['+']]
+            ]
+        }
+
+        if keyboard:
+            self.keyboard = keyboard
+
+        if 'resize_keyboard' in kwargs and kwargs['resize_keyboard']:
+            self.resize_keyboard = kwargs['resize_keyboard']
+        else:
+            self.resize_keyboard = False
+
+        if 'one_time_keyboard' in kwargs and kwargs['one_time_keyboard']:
+            self.one_time_keyboard = kwargs['one_time_keyboard']
+        else:
+            self.one_time_keyboard = False
+
+        if 'selective' in kwargs and kwargs['selective']:
+            self.selective = kwargs['selective']
+        else:
+            self.selective = False
+
+        if 'preset' in kwargs:
+            if kwargs['preset'] in presets:
+                self.keyboard = presets[kwargs['preset']]
+            else:
+                raise ValueError('You chose an invalid preset')
+
+    def as_dict(self):
+        return self.__dict__
