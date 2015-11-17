@@ -100,7 +100,7 @@ class Bot(User):
 
         :param Chat chat: Chat you want to send the message in
         :param str message: Message that you want to send
-        :param str parse_mode: Specify that you want the message parsed as MD, optional
+        :param str parse_mode: Specify if you want message MD parsed, optional
         :param bool disable_web_page_preview: Disable link previews, optional
         :param int reply_to_message_id: Message ID you're replying to, optional
         :param ReplyKeyboardMarkup reply_markup: Keyboard markup object to use

@@ -132,6 +132,11 @@ class User(TelegramBase):
 
 
 class ReplyKeyboardMarkup(TelegramBase):
+    """
+    Class for defining a custom keyboard.
+
+    :param list keyboard: Custom keyboard to use
+    """
     def __init__(self, keyboard=None, **kwargs):
         presets = {
             'four_choices': [
@@ -149,14 +154,26 @@ class ReplyKeyboardMarkup(TelegramBase):
         if keyboard:
             self.keyboard = keyboard
 
-        if 'resize_keyboard' in kwargs:
+        if 'resize_keyboard' in kwargs and kwargs['resize_keyboard']:
             self.resize_keyboard = kwargs['resize_keyboard']
-        if 'one_time_keyboard' in kwargs:
+        else:
+            self.resize_keyboard = False
+
+        if 'one_time_keyboard' in kwargs and kwargs['one_time_keyboard']:
             self.one_time_keyboard = kwargs['one_time_keyboard']
-        if 'selective' in kwargs:
+        else:
+            self.one_time_keyboard = False
+
+        if 'selective' in kwargs and kwargs['selective']:
             self.selective = kwargs['selective']
+        else:
+            self.selective = False
+
         if 'preset' in kwargs:
             if kwargs['preset'] in presets:
                 self.keyboard = presets[kwargs['preset']]
             else:
                 raise ValueError('You chose an invalid preset')
+
+    def as_dict(self):
+        return self.__dict__
