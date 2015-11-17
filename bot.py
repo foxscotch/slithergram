@@ -92,7 +92,7 @@ class Bot(User):
         else:
             raise TelegramError('Did not get a 200 response', r.status_code)
 
-    def send_message(self, chat, message):
+    def send_message(self, chat, message, **kwargs):
         """
         Method that will be used to send messages as the bot.
 
@@ -100,13 +100,29 @@ class Bot(User):
 
         :param Chat chat: Chat you want to send the message in
         :param str message: Message that you want to send
+        :param str parse_mode: Specify that you want the message parsed as MD, optional
+        :param bool disable_web_page_preview: Disable link previews, optional
+        :param int reply_to_message_id: Message ID you're replying to, optional
+        :param ReplyKeyboardMarkup reply_markup: Keyboard markup object to use
         :return: The server's response
         :rtype: requests.models.Response
         """
 
-        url = self.url + 'sendMessage?chat_id={0}&text={1}'.format(chat.chat_id,
-                                                                   message)
-        r = requests.get(url)
+        payload = {
+            'chat_id': chat.chat_id,
+            'text': message
+        }
+
+        if 'parse_mode' in kwargs:
+            payload['parse_mode'] = 'Markdown'
+        if 'disable_web_page_preview' in kwargs:
+            payload['disable_web_page_preview'] = True
+        if 'reply_to_message_id' in kwargs:
+            payload['reply_to_message_id'] = kwargs['reply_to_message_id']
+        if 'reply_markup' in kwargs:
+            payload['reply_markup'] = kwargs['reply_markup'].as_dict()
+
+        r = requests.post(self.url + 'sendMessage', json=json.dumps(payload))
         return r
 
 

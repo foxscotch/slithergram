@@ -123,9 +123,40 @@ class User(TelegramBase):
     def __str__(self):
         """
         The str function for User. It returns the first_name of the user, and
-        it's mostly just intended to be the name of the file for serialization.
+        it was originally intended to be the name of the file for serialization.
         Because first names don't have to be unique, it probably isn't a very
         good idea to use this in important contexts.
         """
 
         return self.first_name
+
+
+class ReplyKeyboardMarkup(TelegramBase):
+    def __init__(self, keyboard=None, **kwargs):
+        presets = {
+            'four_choices': [
+                ['A', 'B'],
+                ['C', 'D']
+            ],
+            'calculator': [
+                [['7'], ['8'], ['9'], ['*']],
+                [['4'], ['5'], ['6'], ['/']],
+                [['1'], ['2'], ['3'], ['-']],
+                [['0'], ['.'], ['='], ['+']]
+            ]
+        }
+
+        if keyboard:
+            self.keyboard = keyboard
+
+        if 'resize_keyboard' in kwargs:
+            self.resize_keyboard = kwargs['resize_keyboard']
+        if 'one_time_keyboard' in kwargs:
+            self.one_time_keyboard = kwargs['one_time_keyboard']
+        if 'selective' in kwargs:
+            self.selective = kwargs['selective']
+        if 'preset' in kwargs:
+            if kwargs['preset'] in presets:
+                self.keyboard = presets[kwargs['preset']]
+            else:
+                raise ValueError('You chose an invalid preset')
