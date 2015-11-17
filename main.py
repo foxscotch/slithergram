@@ -8,14 +8,14 @@ import pickle
 import json
 
 
-def convert_json_to_objects(json):
+def convert_json_to_objects(json_string):
     """
     Converts a JSON string from the API to a collection of objects that
     correspond to the classes defined in this module.
 
     (It's not implemented yet)
 
-    :param str json: JSON string
+    :param str json_string: JSON string
     :return: Collection of objects
     :rtype: dict
     """
@@ -131,6 +131,58 @@ class User(TelegramBase):
         return self.first_name
 
 
+class Chat(TelegramBase):
+    pass
+
+
+class Message(TelegramBase):
+    pass
+
+
+class PhotoSize(TelegramBase):
+    pass
+
+
+class Audio(TelegramBase):
+    pass
+
+
+class Document(TelegramBase):
+    pass
+
+
+class Sticker(TelegramBase):
+    pass
+
+
+class Video(TelegramBase):
+    pass
+
+
+class Voice(TelegramBase):
+    pass
+
+
+class Contact(TelegramBase):
+    pass
+
+
+class Location(TelegramBase):
+    pass
+
+
+class Update(TelegramBase):
+    pass
+
+
+class InputFile(TelegramBase):
+    pass
+
+
+class UserProfilePhotos(TelegramBase):
+    pass
+
+
 class ReplyKeyboardMarkup(TelegramBase):
     """
     Class for defining a custom keyboard.
@@ -177,3 +229,16 @@ class ReplyKeyboardMarkup(TelegramBase):
 
     def as_dict(self):
         return self.__dict__
+
+
+class ReplyKeyboardHide(TelegramBase):
+    pass
+
+
+class ForceReply(TelegramBase):
+    pass
+
+
+class File(TelegramBase):
+    pass
+

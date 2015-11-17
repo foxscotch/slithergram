@@ -27,6 +27,20 @@ do the same, for dependency reasons.
 =====
 
 
+.. _v-0-2-3:
+
+0.2.3
+-----
+
+- Added a frickton of empty classes to :py:mod:`slithergram.main`
+- Changed the way default serialization filenames are chosen.
+  :py:class:`main.TelegramBase` now includes :py:attr:`_default_filename`, which
+  is used instead of the :py:attr:`first_name` attribute, since many subclasses
+  may not have such an attribute.
+- Improved on :py:meth:`bot.Bot.send_message`
+- Added :py:class:`main.ReplyKeyboardMarkup`
+
+
 .. _v-0-2-2:
 
 0.2.2

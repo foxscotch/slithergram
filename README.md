@@ -1,4 +1,4 @@
-# Slithergram 0.2.2
+# Slithergram 0.2.3
 
 Here's where I will re-word the description that's up at the top. Or just leave
 it like this, since it's kinda funny, if you ask me.
@@ -10,7 +10,7 @@ Licensed under the [MIT License][mit].
 
 ## Python Version
 
-It's guaranteed to work with Python 3.5+, but it'll most likely  work with any
+It's guaranteed to work with Python 3.4.3+, but it'll most likely  work with any
 Python 3. It might even work with Python 2, I'll check another time. But if it
 doesn't work as it is, I'm probably not going to bother trying to make it.
 
